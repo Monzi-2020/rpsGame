@@ -7,7 +7,6 @@ function getComputerChoice() {
     }
 
 const computerSelection = getComputerChoice();
-
 let scoreComputer = [];
 let scorePlayer = [];
 
@@ -16,39 +15,60 @@ function playGame() {
         const playerSelection = prompt("Rock? Paper? Scissors?");
         getComputerChoice();
         playRound(computerSelection, playerSelection);
-        console.log(scoreComputer,scorePlayer); 
+        console.log(`Computer: ${scoreComputer} You: ${scorePlayer}`); 
     } 
    }
-   
+
+// function endGame() {
+    // console.log()
+// }
 
 function playRound(computerSelection, playerSelection) {
         if (computerSelection === "rock" && playerSelection.toLowerCase() === "scissors") {
             console.log("You lose! Rock beats scissors");
-            return { scoreComputer: 1, scorePlayer: 0 };
+            scoreComputer = 1;
+            scorePlayer = 0;
+            return [ scoreComputer, scorePlayer];
         }
         else if (computerSelection === "paper" && playerSelection.toLowerCase() === "rock") {
-            console.log("You lose! Paper beats rock");  
-            return { scoreComputer: 1, scorePlayer: 0 };
+            console.log("You lose! Paper beats rock"); 
+            scoreComputer = 1;
+            scorePlayer = 0;
+            return [ scoreComputer, scorePlayer]; 
+            
         }
         else if (computerSelection === "scissors" && playerSelection.toLowerCase() === "paper") {
-            console.log("You lose! scissors beats paper");   
-            return { scoreComputer: 1, scorePlayer: 0 }; 
+            console.log("You lose! scissors beats paper"); 
+            scoreComputer = 1;
+            scorePlayer = 0;
+            return [ scoreComputer, scorePlayer];  
         }    
         else if (playerSelection === "rock" && computerSelection.toLowerCase() === "scissors") {
             console.log("You win! Rock beats scissors");
-            return { scoreComputer: 0, scorePlayer: 1 };
+            scoreComputer = 0;
+            scorePlayer = 1;
+            return [ scoreComputer, scorePlayer]; 
+            
         }
         else if (playerSelection === "paper" && computerSelection.toLowerCase() === "rock") {
             console.log("You win! Paper beats rock");
-            return { scoreComputer: 0, scorePlayer: 1 };  
+            scoreComputer = 0;
+            scorePlayer = 1;
+            return [ scoreComputer, scorePlayer];
+             
         }
         else if (playerSelection === "scissors" && computerSelection.toLowerCase() === "paper") {
             console.log("You win! scissors beats paper");
-            return { scoreComputer: 0, scorePlayer: 1 };
+            scoreComputer = 0;
+            scorePlayer = 1;
+            return [ scoreComputer, scorePlayer];
+            
         }
         else {
             console.log("Tied. Try again!")
-            return { scoreComputer: 0, scorePlayer: 0 };
+            scoreComputer = 0;
+            scorePlayer = 0;
+            return [ scoreComputer, scorePlayer];
         }
     }
     
