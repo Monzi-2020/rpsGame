@@ -8,7 +8,6 @@ function getComputerChoice() {
 
 const scoreComputer = [];
 const scorePlayer = [];
-let winner;
 
 function playGame() {
     for (let i = 0; i < 5; i++) {
@@ -19,12 +18,26 @@ function playGame() {
         console.log(`      <Score Board>
     Computer: ${scoreComputer} You: ${scorePlayer}`); 
     } 
-   const computerFinalScore = scoreComputer;
-   const playerFinalScore = scorePlayer;
-   sumUp(computerFinalScore);
-   sumUp(playerFinalScore);
-   console.log(sumUp(computerFinalScore), sumUp(playerFinalScore));
+    endGame(scoreComputer, scorePlayer);
 }
+
+function endGame(computer,player) {
+    sumUp(computer);
+    sumUp(player);    
+    let winner;
+
+    if (computer > player) {
+        winner = "Computer";
+    }
+    else if (computer < player) {
+        winner = "You";
+    }
+    else {
+        winner = "both";
+    }
+    console.log(`The winner is ${winner}! Congratulations!`);
+    }
+
 
 function sumUp(score) {
     let sum = 0;
@@ -33,10 +46,6 @@ function sumUp(score) {
     }
 }
    
-function endGame() {
-    console.log(`The winner is ${winner}! Congratulations!`);
-    }
-
     
 function playRound(computerSelection, playerSelection) {
         if (computerSelection === "rock" && playerSelection.toLowerCase() === "scissors") {
@@ -80,6 +89,7 @@ function playRound(computerSelection, playerSelection) {
             scoreComputer.push("0");
             scorePlayer.push("0");
         }
+    
     }
     
 
