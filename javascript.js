@@ -8,7 +8,7 @@ function getComputerChoice() {
 
 const scoreComputer = [];
 const scorePlayer = [];
-
+let winner;
 
 function playGame() {
     for (let i = 0; i < 5; i++) {
@@ -19,10 +19,21 @@ function playGame() {
         console.log(`      <Score Board>
     Computer: ${scoreComputer} You: ${scorePlayer}`); 
     } 
-   }
+   const computerFinalScore = scoreComputer;
+   const playerFinalScore = scorePlayer;
+   sumUp(computerFinalScore);
+   sumUp(playerFinalScore);
+   console.log(sumUp(computerFinalScore), sumUp(playerFinalScore));
+}
 
+function sumUp(score) {
+    let sum = 0;
+    for (let i =0; i < score.length; i++) {
+        sum += score[i];
+    }
+}
+   
 function endGame() {
-    let winner;
     console.log(`The winner is ${winner}! Congratulations!`);
     }
 
