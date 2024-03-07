@@ -26,6 +26,8 @@ function endGame(scoreComputer,scorePlayer) {
     const reButton = document.createElement("button");
     reButton.textContent = "Try Again?";
     result.appendChild(reButton);
+    reButton.addEventListener("click", () =>
+    {location.reload()});
 }
  
 function playRound(computerSelection, playerSelection) {
@@ -98,8 +100,6 @@ const scoreCom = document.createElement("div");
 const scorePla = document.createElement("div");
 const result = document.querySelector("result");
 const h1 = document.querySelector("h1")
-
-
 
 
 buttons.forEach((button) => {
