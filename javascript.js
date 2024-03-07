@@ -44,7 +44,7 @@ function playRound(computerSelection, playerSelection) {
          
         }
         else if (computerSelection === "scissors" && playerSelection === "paper") {
-            const text ="You lose! scissors beats paper";          
+            const text ="You lose! Scissors beats paper";          
             scoreComputer += 1;
             div.textContent = text;
    
@@ -62,7 +62,7 @@ function playRound(computerSelection, playerSelection) {
 
         }
         else if (playerSelection === "scissors" && computerSelection === "paper") {
-            const text ="You win! scissors beats paper";    
+            const text ="You win! Scissors beats paper";    
             scorePlayer += 1;
             div.textContent = text;          
         }
@@ -93,7 +93,6 @@ function checkScore(score1, score2) {
 
 const content = document.querySelector("content")
 const buttons = document.querySelectorAll("button");
-const buttonss = document.createElement("button")
 const div1 = document.querySelector("div")
 const div = document.createElement("div");
 const scoreCom = document.createElement("div");
