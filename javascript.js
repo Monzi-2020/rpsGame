@@ -97,6 +97,9 @@ const div1 = document.querySelector("div")
 const div = document.createElement("div");
 const scoreCom = document.createElement("div");
 const scorePla = document.createElement("div");
+scoreCom.classList.add("font");
+scorePla.classList.add("font");
+div.classList.add("font");
 const result = document.querySelector("result");
 const h1 = document.querySelector("h1")
 
