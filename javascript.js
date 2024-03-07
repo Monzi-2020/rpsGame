@@ -6,16 +6,8 @@ function getComputerChoice() {
     return choice;
     }
 
-
-getComputerChoice();
-const computerSelection = getComputerChoice();
-let playerSelection = ""
 let scoreComputer = 0;
 let scorePlayer = 0;
-
-
-
-// endGame(scoreComputer, scorePlayer);
 
 function endGame(scoreComputer,scorePlayer) {   
     let winner;
@@ -28,80 +20,92 @@ function endGame(scoreComputer,scorePlayer) {
     else {
         winner = "both";
     }
-    console.log(`The winner is ${winner}! Congratulations!`);
+    content.remove();
+    div1.remove();
+    h1.textContent = `The winner is ${winner}!  Congratulations!`;
+    const reButton = document.createElement("button");
+    reButton.textContent = "Try Again?";
+    result.appendChild(reButton);
 }
-
-    
+ 
 function playRound(computerSelection, playerSelection) {
-        if (computerSelection === "rock" && playerSelection.toLowerCase() === "scissors") {
+        
+        if (computerSelection === "rock" && playerSelection === "scissors") {
             const text ="You lose! Rock beats scissors";
-            scoreComputer += 1;
+            scoreComputer += 1;  
             div.textContent = text;
-            scoreCom.textContent = `Computer score: ${scoreComputer}`;
-            scorePla.textContent = `Your score : ${scorePlayer}`;
-    
         }
-        else if (computerSelection === "paper" && playerSelection.toLowerCase() === "rock") {
+        else if (computerSelection === "paper" && playerSelection === "rock") {
             const text ="You lose! Paper beats rock";          
             scoreComputer += 1; 
             div.textContent = text;
-            scoreCom.textContent = `Computer score: ${scoreComputer}`;
-            scorePla.textContent = `Your score : ${scorePlayer}`;
- 
+         
         }
-        else if (computerSelection === "scissors" && playerSelection.toLowerCase() === "paper") {
+        else if (computerSelection === "scissors" && playerSelection === "paper") {
             const text ="You lose! scissors beats paper";          
             scoreComputer += 1;
             div.textContent = text;
-            scoreCom.textContent = `Computer score: ${scoreComputer}`;
-            scorePla.textContent = `Your score : ${scorePlayer}`;
-            
+   
         }    
-        else if (playerSelection === "rock" && computerSelection.toLowerCase() === "scissors") {
+        else if (playerSelection === "rock" && computerSelection === "scissors") {
             const text ="You win! Rock beats scissors";       
             scorePlayer += 1;
             div.textContent = text;
-            scoreCom.textContent = `Computer score: ${scoreComputer}`;
-            scorePla.textContent = `Your score : ${scorePlayer}`;
-            
+   
         }
-        else if (playerSelection === "paper" && computerSelection.toLowerCase() === "rock") {
+        else if (playerSelection === "paper" && computerSelection === "rock") {
             const text ="You win! Paper beats rock";         
             scorePlayer += 1;
             div.textContent = text;
-            scoreCom.textContent = `Computer score: ${scoreComputer}`;
-            scorePla.textContent = `Your score : ${scorePlayer}`;
-             
+
         }
-        else if (playerSelection === "scissors" && computerSelection.toLowerCase() === "paper") {
+        else if (playerSelection === "scissors" && computerSelection === "paper") {
             const text ="You win! scissors beats paper";    
             scorePlayer += 1;
-            div.textContent = text;
-            scoreCom.textContent = `Computer score: ${scoreComputer}`;
-            scorePla.textContent = `Your score : ${scorePlayer}`;
-            
+            div.textContent = text;          
         }
         else {
             const text ="Tied. Try again!"
             div.textContent = text;
-            scoreCom.textContent = `Computer score: ${scoreComputer}`;
-            scorePla.textContent = `Your score : ${scorePlayer}`;
-        
         }
-     content.appendChild(div);
-     content.appendChild(scoreCom);
-     content.appendChild(scorePla);
+        checkScore(scoreComputer, scorePlayer);
+        // scoreCom.textContent = `Computer score: ${scoreComputer}`;
+        // scorePla.textContent = `Your score : ${scorePlayer}`;
+        // content.appendChild(div);
+        // content.appendChild(scoreCom);
+        // content.appendChild(scorePla); 
 }
     
+function checkScore(score1, score2) {
+    if(score1 === 5 || score2 === 5) {
+        endGame(score1, score2); 
+    }
+    else {
+        scoreCom.textContent = `Computer score: ${scoreComputer}`;
+        scorePla.textContent = `Your score : ${scorePlayer}`;
+        content.appendChild(div);
+        content.appendChild(scoreCom);
+        content.appendChild(scorePla);  
+    }
+}
 
 const content = document.querySelector("content")
 const buttons = document.querySelectorAll("button");
+const buttonss = document.createElement("button")
+const div1 = document.querySelector("div")
 const div = document.createElement("div");
 const scoreCom = document.createElement("div");
 const scorePla = document.createElement("div");
+const result = document.querySelector("result");
+const h1 = document.querySelector("h1")
+
+
+
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
+        const computerSelection = getComputerChoice();
+        let playerSelection = ""
         playerSelection = button.id;
         playRound(computerSelection, playerSelection);
     });
