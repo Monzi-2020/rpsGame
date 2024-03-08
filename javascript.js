@@ -22,8 +22,11 @@ function endGame(scoreComputer,scorePlayer) {
     }
     content.remove();
     div1.remove();
+    h1.classList.add("h1Result")
+    result.appendChild(h1)
     h1.textContent = `The winner is ${winner}!  Congratulations!`;
     const reButton = document.createElement("button");
+    reButton.classList.add("reBtn");
     reButton.textContent = "Try Again?";
     result.appendChild(reButton);
     reButton.addEventListener("click", () =>
@@ -71,11 +74,6 @@ function playRound(computerSelection, playerSelection) {
             div.textContent = text;
         }
         checkScore(scoreComputer, scorePlayer);
-        // scoreCom.textContent = `Computer score: ${scoreComputer}`;
-        // scorePla.textContent = `Your score : ${scorePlayer}`;
-        // content.appendChild(div);
-        // content.appendChild(scoreCom);
-        // content.appendChild(scorePla); 
 }
     
 function checkScore(score1, score2) {
@@ -83,6 +81,7 @@ function checkScore(score1, score2) {
         endGame(score1, score2); 
     }
     else {
+        div.classList.add("style")
         scoreCom.textContent = `Computer score: ${scoreComputer}`;
         scorePla.textContent = `Your score : ${scorePlayer}`;
         content.appendChild(div);
